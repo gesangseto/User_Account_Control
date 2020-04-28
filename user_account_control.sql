@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2020 at 09:49 PM
+-- Generation Time: Apr 28, 2020 at 04:07 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -42,16 +42,17 @@ CREATE TABLE `logs` (
 --
 
 INSERT INTO `logs` (`id`, `user_id`, `url`, `access`, `method`, `body`, `time`) VALUES
-(1, 1586752419, 'UAC_Group', 'create', 'POST', 'asdas,sadas', '2020-04-23 19:36:34'),
-(2, 1586752419, 'UAC_Group', 'create', 'POST', '{\"group_name\":\"asdas\",\"group_info\":\"sadas\"}', '2020-04-23 19:38:14'),
-(3, 1586752419, 'http://localhost/New_UAC/UAC_Group', 'create', 'POST', '{\"group_name\":\"asdas\",\"group_info\":\"sadas\"}', '2020-04-23 19:39:56'),
-(4, 1586752419, 'http://localhost/New_UAC/UAC_Group', 'create', 'POST', '{\"group_name\":\"asdas\",\"group_info\":\"sadas\"}', '2020-04-23 19:42:20'),
-(5, 1586752419, 'http://localhost/New_UAC/UAC_User', 'delete', 'GET', '{\"id\":\"1587153524\"}', '2020-04-23 19:45:15'),
-(6, 1586752419, 'http://localhost/New_UAC/UAC_User', 'read', 'GET', '{\"id\":\"1586752419\"}', '2020-04-23 19:45:44'),
-(7, 1586752419, 'http://localhost/New_UAC/UAC_User', 'read', 'GET', '{\"id\":\"1586752419\"}', '2020-04-23 19:46:41'),
-(8, 1586752419, 'http://localhost/New_UAC/UAC_Permission', 'read', 'GET', '{\"id\":\"1586748170\"}', '2020-04-23 19:47:32'),
-(9, 1586752419, 'http://localhost/New_UAC/UAC_Permission', 'create', 'POST', '{\"group_id\":\"1586748170\",\"access_map_id\":\"1\",\"create\":\"on\",\"create_permission\":\"TRUE\"}', '2020-04-23 19:47:41'),
-(10, 1586752419, 'http://localhost/New_UAC/UAC_Permission', 'update', 'POST', '{\"permission_id\":\"79\",\"group_id\":\"1586748170\",\"id\":\"79\",\"create\":\"on\",\"read\":\"on\",\"update\":\"on\",\"change_permission\":\"TRUE\"}', '2020-04-23 19:48:31');
+(491, 1586752419, 'http://localhost/User_Account_Control/UAC_Group', 'read', 'GET', '{\"id\":\"1\"}', '2020-04-28 02:04:49'),
+(492, 1586752419, 'http://localhost/User_Account_Control/UAC_User', 'update', 'GET', '{\"id\":\"1586752419\"}', '2020-04-28 02:05:00'),
+(493, 1586752419, 'http://localhost/User_Account_Control/UAC_User', 'update', 'POST', '{\"id\":\"1586752419\",\"username\":\"gesang\",\"email\":\"gesangseto@gmail.com\",\"fullname\":\"Gesang Aji Seto\",\"address\":\"    Jl.Bambu Gg.Resimin No.53 RT.01\\/08 Kreo - Larangan,\",\"phone_number\":\"082122222657\",\"password\":\"kolorijo123\",\"re_password\":\"kolorijo123\"}', '2020-04-28 02:05:14'),
+(494, 1586752419, 'http://localhost/User_Account_Control/UAC_User', 'delete', 'GET', '{\"id\":\"1587153524\"}', '2020-04-28 02:05:45'),
+(495, 1586752419, 'http://localhost/User_Account_Control/UAC_Permission', 'read', 'GET', '{\"id\":\"1\"}', '2020-04-28 02:05:59'),
+(496, 1586752419, 'http://localhost/User_Account_Control/UAC_Permission', 'update', 'POST', '{\"permission_id\":\"71\",\"group_id\":\"1\",\"id\":\"71\",\"create\":\"on\",\"read\":\"on\",\"update\":\"on\",\"delete\":\"on\",\"change_permission\":\"TRUE\"}', '2020-04-28 02:06:05'),
+(497, 1586752419, 'http://localhost/User_Account_Control/UAC_Permission', 'update', 'POST', '{\"permission_id\":\"1\",\"group_id\":\"1\",\"id\":\"1\",\"create\":\"on\",\"read\":\"on\",\"update\":\"on\",\"change_permission\":\"TRUE\"}', '2020-04-28 02:06:10'),
+(498, 1586752419, 'http://localhost/User_Account_Control/UAC_User', 'update', 'GET', '{\"id\":\"1587153524\"}', '2020-04-28 02:06:18'),
+(499, 1586752419, 'http://localhost/User_Account_Control/UAC_User', 'delete', 'GET', '{\"id\":\"1587153524\"}', '2020-04-28 02:06:25'),
+(500, 1586752419, 'http://localhost/User_Account_Control/UAC_User', 'delete', 'GET', '{\"id\":\"1587844536\"}', '2020-04-28 02:06:32'),
+(501, 1586752419, 'http://localhost/User_Account_Control/UAC_User', 'read', 'GET', '{\"id\":\"1586752419\"}', '2020-04-28 02:06:35');
 
 -- --------------------------------------------------------
 
@@ -72,8 +73,7 @@ CREATE TABLE `uac_group` (
 --
 
 INSERT INTO `uac_group` (`id`, `group_name`, `group_info`, `create_time`, `update_time`) VALUES
-(1, 'Developer', 'Admin', '2020-04-17 17:12:47', '2020-04-17 17:20:43'),
-(1586748170, 'asdas', 'sadas', '2020-04-23 19:24:09', '2020-04-23 19:24:09');
+(1, 'Developers', 'All Grant', '2020-04-17 17:12:47', '2020-04-26 05:00:01');
 
 -- --------------------------------------------------------
 
@@ -143,11 +143,10 @@ CREATE TABLE `uac_permission` (
 --
 
 INSERT INTO `uac_permission` (`id`, `group_id`, `access_map_id`, `create`, `read`, `update`, `delete`, `create_time`, `update_time`) VALUES
-(1, 1, 1, 1, 1, 1, 0, '2020-04-15 11:03:21', '2020-04-23 18:24:07'),
-(2, 1, 3, 1, 1, 1, 0, '2020-04-15 11:03:21', '2020-04-23 16:32:48'),
-(3, 1, 34, 1, 1, 1, 1, '2020-04-15 11:03:21', '2020-04-23 18:37:22'),
-(71, 1, 2, 1, 1, 1, 0, '2020-04-15 11:18:18', '2020-04-23 16:32:52'),
-(79, 1586748170, 1, 1, 1, 1, 0, '2020-04-23 19:47:41', '2020-04-23 19:48:31');
+(1, 1, 1, 1, 1, 1, 0, '2020-04-15 11:03:21', '2020-04-28 02:06:11'),
+(2, 1, 3, 1, 1, 1, 1, '2020-04-15 11:03:21', '2020-04-28 01:44:05'),
+(3, 1, 34, 1, 1, 1, 1, '2020-04-15 11:03:21', '2020-04-28 01:43:36'),
+(71, 1, 2, 1, 1, 1, 1, '2020-04-15 11:18:18', '2020-04-28 02:06:05');
 
 -- --------------------------------------------------------
 
@@ -173,8 +172,7 @@ CREATE TABLE `uac_user` (
 --
 
 INSERT INTO `uac_user` (`id`, `username`, `email`, `password`, `fullname`, `address`, `phone_number`, `group_id`, `create_time`, `update_time`) VALUES
-(1586752419, 'gesang', 'gesangseto@gmail.com', 'fd453bf0bc5e317157d332c92ec82546ed9baefcae0518be47caaebd', 'Gesang Aji Seto', 'Jl.Bambu Gg.Resimin No.53 RT.01/08 Kreo - Larangan,', '082122222657', 1, '2020-04-13 04:33:39', '2020-04-23 16:16:00'),
-(1587153524, 'puspita', 'puspita@yaoo.com', '244eba31325269bb2d0a7aee5020fbeb6d57249179a742004a8bbd41', 'Puspitasari', 'Jl.Bambu Gg.Resimin No.53 RT.01/08 Kreo - Larangan,', '232141411243', 1, '2020-04-17 19:58:44', '2020-04-23 18:37:45');
+(1586752419, 'gesang', 'gesangseto@gmail.com', '945bcdececc5edef87ece32479317df347e16be56425ac2f9d7f2a5b', 'Gesang Aji Seto', '    Jl.Bambu Gg.Resimin No.53 RT.01/08 Kreo - Larangan,', '082122222657', 1, '2020-04-13 04:33:39', '2020-04-28 02:05:14');
 
 -- --------------------------------------------------------
 
@@ -335,31 +333,31 @@ ALTER TABLE `uac_user`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=502;
 
 --
 -- AUTO_INCREMENT for table `uac_group`
 --
 ALTER TABLE `uac_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1586748171;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1586748184;
 
 --
 -- AUTO_INCREMENT for table `uac_menu_mapping`
 --
 ALTER TABLE `uac_menu_mapping`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `uac_parent_menu`
 --
 ALTER TABLE `uac_parent_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `uac_permission`
 --
 ALTER TABLE `uac_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
