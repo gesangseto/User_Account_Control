@@ -1,6 +1,27 @@
 <?php
 $controller = $this->router->fetch_class();
 $method = strtolower($this->router->fetch_method()); ?>
+
+<script src="<?= base_url('dist/datatables/jquery/jquery-2.2.3.min.js') ?>"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php if (isset($response)) {
+    if ($response['statusCode'] == 00) {
+        echo '
+    <script>
+        $(window).load(function() {
+            swal("' . $response['message'] . '", "", "success");
+        });
+    </script>';
+    } else {
+        echo '
+        <script>
+            $(window).load(function() {
+                swal("' . $response['message'] . '", "", "error");
+            });
+        </script>';
+    }
+}
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">

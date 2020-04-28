@@ -22,8 +22,9 @@
 <script src="<?= base_url('assets') ?>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets') ?>/dist/js/demo.js"></script>
-<script type="text/javascript">
-    var $j = jQuery.noConflict(true);
+<script>
+    $.noConflict();
+    // Code that uses other library's $ can follow here.
 </script>
 </body>
 

@@ -111,6 +111,10 @@ class UAC_Permission extends CI_Controller
         $dataRs['uac_permission'] = $this->_UAC_Permission->_view_user_permission($group_id);
         $dataRs['access_map'] = $this->_UAC_Permission->_view_access_map();
         $dataRs['parent_map'] = $this->_UAC_Permission->_view_parent_map();
+        $dataRs['response'] = array(
+            'statusCode' => 00,
+            'message' => 'Update success'
+        );
         $this->load->view('UAC/UAC_Permission/Read', $dataRs);
         $this->load->view('Templates/Footer');
         // Here You Code for Update
@@ -120,8 +124,8 @@ class UAC_Permission extends CI_Controller
         $permission_id = $_GET['permission_id'];
         $group_id = $_GET['group_id'];
         $this->db->delete('uac_permission', array('id' => $permission_id));
-        $dataRs = array(
-            'status' => '1',
+        $dataRs['response'] = array(
+            'statusCode' => 00,
             'message' => 'delete success'
         );
         $dataRs['group_info'] = $this->_UAC_Permission->_view_group($group_id);

@@ -69,9 +69,10 @@ class UAC_Group extends CI_Controller
             $this->load->view('UAC/UAC_Group/Index', $data);
         } else {
             $data['group'] = $this->db->get_where('uac_group', array('id' => $_GET['id']))->result_array();
-            $this->load->view('UAC/UAC_Group/Update', @$data);
+            $this->load->view('UAC/UAC_Group/Update', $data);
         }
         // Here You Code for Update
+        $this->load->view('Templates/Footer');
     }
     public function delete()
     {

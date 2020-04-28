@@ -52,6 +52,7 @@ class UAC_Menu_Mapping extends CI_Controller
         $dataRs['parent_map'] = $this->_UAC_Menu_Mapping->_view_all_parent_map();
         $dataRs['count_access_map'] = $this->_UAC_Menu_Mapping->_count_access_map();
         $this->load->view('UAC/UAC_Menu_Mapping/Index', $dataRs);
+        $this->load->view('Templates/Footer');
     }
     public function read()
     {
@@ -91,21 +92,22 @@ class UAC_Menu_Mapping extends CI_Controller
         if (isset($_GET['parent_map_id'])) {
             $id = $this->input->get('parent_map_id', TRUE);
             $dataRs = $this->_UAC_Menu_Mapping->_check_delete_parent($id);
-            if ($dataRs['status'] != 0) {
+            // var_dump($dataRs);
+            if ($dataRs['response']['statusCode'] == 00) {
                 $this->db->delete('uac_parent_menu', array('id' => $id));
             }
         } else if (isset($_GET['access_map_id'])) {
             $id = $this->input->get('access_map_id', TRUE);
             $dataRs = $this->_UAC_Menu_Mapping->_check_delete_access($id);
-            if ($dataRs['status'] != 0) {
+            if ($dataRs['response']['statusCode'] == 00) {
                 $this->db->delete('uac_menu_mapping', array('id' => $id));
             }
         } else if (isset($_GET['group_id'])) {
             $group_id = $this->input->get('group_id', TRUE);
             $access_map_id = $this->input->get('map_id', TRUE);
             $this->db->delete('uac_permission', array('group_id' => $group_id, 'access_map_id' => $access_map_id));
-            $dataRs = array(
-                "status" => 1,
+            $dataRs['response'] = array(
+                "statusCode" => 00,
                 "message" => "Success Delete User Permission"
             );
         }

@@ -76,13 +76,13 @@ class _UAC_Menu_Mapping extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM  `uac_parent_menu` as A JOIN uac_menu_mapping  as B ON A.id = B.parent_map_id WHERE A.id = $id", 1);
         if ($query->num_rows() > 0) {
-            $data = array(
-                'status' => '0',
-                'message' => 'failed, please remove Access Map first'
+            $data['response'] = array(
+                'statusCode' => 01,
+                'message' => 'failed, please remove Map first to delete this parent'
             );
         } else {
-            $data = array(
-                'status' => '1',
+            $data['response'] = array(
+                'statusCode' => 00,
                 'message' => 'success deleting map'
             );
         }
@@ -92,13 +92,13 @@ class _UAC_Menu_Mapping extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM  `uac_menu_mapping` as A JOIN uac_permission  as B ON A.id = B.access_map_id WHERE A.id = $id", 1);
         if ($query->num_rows() > 0) {
-            $data = array(
-                'status' => '0',
-                'message' => 'failed, please remove user permission to delete this Access Map first'
+            $data['response'] = array(
+                'statusCode' => 01,
+                'message' => 'failed, please remove group in this Map to delete this Map'
             );
         } else {
-            $data = array(
-                'status' => '1',
+            $data['response'] = array(
+                'statusCode' => 00,
                 'message' => 'success deleting access map'
             );
         }
@@ -109,13 +109,13 @@ class _UAC_Menu_Mapping extends CI_Model
         $this->db->where('id', $id);
         $query = $this->db->update('uac_parent_menu', $field);
         if ($query == 1) {
-            $data = array(
-                'status' => '1',
+            $data['response'] = array(
+                'statusCode' => 00,
                 'message' => 'success update parent map data'
             );
         } else {
-            $data = array(
-                'status' => '0',
+            $data['response'] = array(
+                'statusCode' => 99,
                 'message' => 'system error'
             );
         }
@@ -126,13 +126,13 @@ class _UAC_Menu_Mapping extends CI_Model
         $this->db->where('id', $id);
         $query = $this->db->update('uac_menu_mapping', $field);
         if ($query == 1) {
-            $data = array(
-                'status' => '1',
+            $data['response'] = array(
+                'statusCode' => 00,
                 'message' => 'success update access mapdata'
             );
         } else {
-            $data = array(
-                'status' => '0',
+            $data['response'] = array(
+                'statusCode' => 99,
                 'message' => 'system error'
             );
         }
